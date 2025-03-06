@@ -5,14 +5,14 @@ import SearchBar from './SearchBar';
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full bg-backgroundColor text-white py-4 border-b border-white">
+    <header className="w-full text-white py-4 border-b border-white">
       <img
         className="absolute top-0 left-0 max-h-[78px] w-full h-full object-cover"
         src={AbstractDesign}
         alt="bg-header"
       />
       <div className="w-full flex items-center justify-between px-[8%] relative">
-        <h1 className="text-4xl font-extrabold">React Shop</h1>
+        <h1 className="text-4xl font-extrabold font-mono">FIVE Fake Shop</h1>
         <SearchBar />
         <div className="flex items-center text-lg gap-6">
           <button className="flex items-center px-4 py-2 border border-white rounded-md">
