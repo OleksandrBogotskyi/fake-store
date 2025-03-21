@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store/store";
-import { fetchProductsThunk } from "../store/productSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { fetchProducts } from "../store/products/actions";
+import { selectProducts, selectProductsStatus, selectProductsError } from "../store/products/selectors";
 import Header from "../components/Header";
 import ProductList from "../components/ProductList";
 
 function Store() {
-  const dispatch = useDispatch<AppDispatch>();
-  const { products, status, error } = useSelector((state: RootState) => state.products);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(selectProducts);
+  const status = useAppSelector(selectProductsStatus);
+  const error = useAppSelector(selectProductsError);
 
   useEffect(() => {
-    dispatch(fetchProductsThunk());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   return (
