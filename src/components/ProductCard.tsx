@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../store/products';
+import { Product } from '../types/product.type';
 
 interface ProductCardProps {
   product: Product;

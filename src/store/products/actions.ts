@@ -8,3 +8,10 @@ export const fetchProducts = createAsyncThunk(
     return await ProductsService.fetchProducts();
   }
 );
+
+export const fetchCategories = createAsyncThunk(
+  ACTION_TYPE.FETCH_CATEGORIES,
+  async () => {
+    return await ProductsService.fetchCategories();
+  }
+);

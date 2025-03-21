@@ -14,6 +14,7 @@ export interface Category {
   
   export interface ProductsState {
     products: Product[];
+    categories: Category[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
   }

@@ -1,5 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
-import { fetchProducts } from "./actions";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchProducts, fetchCategories } from "./actions";
 import { initialState } from "./types";
 
 const productsSlice = createSlice({
@@ -18,6 +18,17 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to fetch products";
+      })
+      .addCase(fetchCategories.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.categories = action.payload;
+      })
+      .addCase(fetchCategories.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to fetch categories";
       });
   },
 });
