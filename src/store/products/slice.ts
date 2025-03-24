@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts, fetchCategories } from "./actions";
-import { initialState } from "./types";
+import { fetchProducts, fetchCategories, fetchProductsByCategory } from "./actions";
+import { initialState } from "../../types/product.type";
 
 const productsSlice = createSlice({
   name: "products",
@@ -17,7 +17,7 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message || "Failed to fetch products";
+        state.error = action.payload as string || "Failed to fetch products";
       })
       .addCase(fetchCategories.pending, (state) => {
         state.status = "loading";
@@ -28,8 +28,19 @@ const productsSlice = createSlice({
       })
       .addCase(fetchCategories.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message || "Failed to fetch categories";
-      });
+        state.error = action.payload as string || "Failed to fetch categories";
+      })
+      .addCase(fetchProductsByCategory.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.products = action.payload;
+      })
+      .addCase(fetchProductsByCategory.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string || "Failed to fetch products by category";
+      })
   },
 });
 

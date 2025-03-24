@@ -12,7 +12,6 @@ export class ProductsService {
     }
   }
 
-  // New method to fetch categories
   static async fetchCategories() {
     try {
       const response = await axiosInstance.get(APIEndpoints.CATEGORIES);
@@ -22,4 +21,17 @@ export class ProductsService {
       throw error;
     }
   }
+
+  static async fetchProductsByCategory(categoryId: number) {
+    try {
+      const response = await axiosInstance.get(
+        `${APIEndpoints.CATEGORIES}/${categoryId}/products`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products by category:", error);
+      throw error;
+    }
+  }
 }
+
