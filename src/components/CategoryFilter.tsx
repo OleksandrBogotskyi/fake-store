@@ -27,9 +27,9 @@ function CategoryFilter({
       <button
         onClick={handleResetFilters}
         className={classNames('px-4 py-2 rounded-lg transition text-white', {
-          'bg-blue-500': selectedCategory === null,
+          'bg-blue-500': !!selectedCategory,
           'bg-gray-900 border border-gray-700 hover:bg-gray-800':
-            selectedCategory !== null,
+            !selectedCategory,
         })}
       >
         All

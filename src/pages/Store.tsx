@@ -3,14 +3,11 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   fetchProducts,
   fetchProductsByCategory,
-} from '../store/products/actions';
-import {
   selectProducts,
   selectProductsStatus,
   selectProductsError,
-} from '../store/products/selectors';
-import { fetchCategories } from '../store/categories/actions';
-import { selectCategories } from '../store/categories/selectors';
+} from '../store/products';
+import { fetchCategories, selectCategories } from '../store/categories';
 import ProductList from '../components/ProductList';
 import CategoryFilter from '../components/CategoryFilter';
 import { Category } from '../types/category.types';
