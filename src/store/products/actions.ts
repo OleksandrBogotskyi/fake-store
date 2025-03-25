@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ProductsService } from "../../services/products";
 import { ACTION_TYPE } from "../../enums/action-types.enum";
+import { CategoriesService } from "../../services/categories";
 
 export const fetchProducts = createAsyncThunk(
   ACTION_TYPE.FETCH_PRODUCTS,
@@ -18,7 +19,7 @@ export const fetchCategories = createAsyncThunk(
   ACTION_TYPE.FETCH_CATEGORIES,
   async (_, { rejectWithValue }) => {
     try {
-      const data = await ProductsService.fetchCategories();
+      const data = await CategoriesService.fetchCategories();
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message || "Failed to fetch categories");

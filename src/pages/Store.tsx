@@ -26,7 +26,6 @@ function Store() {
     useState<Nullable<Category>>(null);
 
   useEffect(() => {
-    dispatch(fetchProducts());
     dispatch(fetchCategories());
   }, [dispatch]);
 

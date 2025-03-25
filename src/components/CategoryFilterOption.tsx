@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Category } from "../types/category.types";
 
 interface CategoryFilterOptionProps {
@@ -17,15 +18,17 @@ function CategoryFilterOption({
     onClick(category);
   };
 
-  const baseClasses = "px-4 py-2 rounded-lg transition";
-  const selectedClasses = isSelected
-    ? "bg-blue-500 text-white"
-    : "bg-gray-900 text-white border border-gray-700 hover:bg-gray-800";
-
   return (
     <button
       onClick={handleClick}
-      className={`${baseClasses} ${selectedClasses} ${className}`}
+      className={classNames(
+        "px-4 py-2 rounded-lg transition",
+        {
+          "bg-blue-500 text-white": isSelected,
+          "bg-gray-900 text-white border border-gray-700 hover:bg-gray-800": !isSelected,
+        },
+        className
+      )}
     >
       {category.name}
     </button>

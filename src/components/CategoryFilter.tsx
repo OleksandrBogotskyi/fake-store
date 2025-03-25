@@ -1,6 +1,7 @@
 import { Category } from '../types/category.types';
 import { Nullable } from '../types/utils';
 import CategoryFilterOption from './CategoryFilterOption';
+import classNames from 'classnames';
 
 interface CategoryFilterProps {
   categories: Category[];
@@ -25,11 +26,12 @@ function CategoryFilter({
     <div className="flex space-x-4 mb-4">
       <button
         onClick={handleResetFilters}
-        className={`px-4 py-2 rounded-lg transition ${
+        className={classNames(
+          'px-4 py-2 rounded-lg transition',
           selectedCategory === null
             ? 'bg-blue-500 text-white'
             : 'bg-gray-900 text-white border border-gray-700 hover:bg-gray-800'
-        }`}
+        )}
       >
         All
       </button>
