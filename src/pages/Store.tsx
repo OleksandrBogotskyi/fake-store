@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   fetchProducts,
-  fetchCategories,
   fetchProductsByCategory,
 } from '../store/products/actions';
 import {
   selectProducts,
   selectProductsStatus,
   selectProductsError,
-  selectCategories,
 } from '../store/products/selectors';
+import { fetchCategories } from '../store/categories/actions';
+import { selectCategories } from '../store/categories/selectors';
 import ProductList from '../components/ProductList';
 import CategoryFilter from '../components/CategoryFilter';
 import { Category } from '../types/category.types';

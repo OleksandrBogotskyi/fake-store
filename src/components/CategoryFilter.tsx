@@ -26,12 +26,11 @@ function CategoryFilter({
     <div className="flex space-x-4 mb-4">
       <button
         onClick={handleResetFilters}
-        className={classNames(
-          'px-4 py-2 rounded-lg transition',
-          selectedCategory === null
-            ? 'bg-blue-500 text-white'
-            : 'bg-gray-900 text-white border border-gray-700 hover:bg-gray-800'
-        )}
+        className={classNames('px-4 py-2 rounded-lg transition text-white', {
+          'bg-blue-500': selectedCategory === null,
+          'bg-gray-900 border border-gray-700 hover:bg-gray-800':
+            selectedCategory !== null,
+        })}
       >
         All
       </button>

@@ -1,4 +1,5 @@
 import { Category } from './category.types';
+
 export interface Product {
     category: Category;
     description: string;

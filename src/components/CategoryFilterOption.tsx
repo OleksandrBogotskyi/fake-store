@@ -22,10 +22,10 @@ function CategoryFilterOption({
     <button
       onClick={handleClick}
       className={classNames(
-        "px-4 py-2 rounded-lg transition",
+        "px-4 py-2 rounded-lg transition text-white",
         {
-          "bg-blue-500 text-white": isSelected,
-          "bg-gray-900 text-white border border-gray-700 hover:bg-gray-800": !isSelected,
+          "bg-blue-500": isSelected,
+          "bg-gray-900 border border-gray-700 hover:bg-gray-800": !isSelected,
         },
         className
       )}
