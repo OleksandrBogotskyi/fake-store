@@ -25,3 +25,15 @@ export const fetchProductsByCategory = createAsyncThunk(
     }
   }
 );
+
+export const fetchProductsByTitle = createAsyncThunk(
+  ACTION_TYPE.FETCH_PRODUCTS_BY_TITLE,
+  async (title: string, { rejectWithValue }) => {
+    try {
+      const data = await ProductsService.fetchProductsByTitle(title);
+      return data;
+    } catch (error: any) {
+      return rejectWithValue(error.message || "Failed to fetch products by title");
+    }
+  }
+);

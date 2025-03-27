@@ -23,4 +23,15 @@ export class ProductsService {
       throw error;
     }
   }
+
+  static async fetchProductsByTitle(title: string) {
+    try {
+      const response = await axiosInstance.get(`${APIEndpoints.PRODUCTS}/?title=${title}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products by title:", error);
+      throw error;
+    }
+  }
+  
 }
