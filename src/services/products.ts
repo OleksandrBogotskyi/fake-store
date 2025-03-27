@@ -2,36 +2,13 @@ import { axiosInstance } from "../core/api";
 import { APIEndpoints } from "../enums/api-url.enum";
 
 export class ProductsService {
-  static async fetchProducts() {
+  static async fetchProducts(filters: { title?: string; categoryId?: number } = {}) {
     try {
-      const response = await axiosInstance.get(APIEndpoints.PRODUCTS);
+      const response = await axiosInstance.get(APIEndpoints.PRODUCTS, { params: filters });
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
       throw error;
     }
   }
-
-  static async fetchProductsByCategory(categoryId: number) {
-    try {
-      const response = await axiosInstance.get(
-        `${APIEndpoints.CATEGORIES}/${categoryId}/products`
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching products by category:", error);
-      throw error;
-    }
-  }
-
-  static async fetchProductsByTitle(title: string) {
-    try {
-      const response = await axiosInstance.get(`${APIEndpoints.PRODUCTS}/?title=${title}`);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching products by title:", error);
-      throw error;
-    }
-  }
-  
 }

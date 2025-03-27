@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import React from 'react';
+import { CiSearch } from 'react-icons/ci';
 
 interface SearchBarProps {
-  onSearch: (query: string) => void;
+  value: string;
+  onChange: (query: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-    onSearch(e.target.value);
-  };
-
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
   return (
     <div className="relative">
       <div className="absolute inset-y-0 start-0 flex items-center ps-3 cursor-pointer">
@@ -20,8 +14,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       </div>
       <input
         type="text"
-        value={query}
-        onChange={handleSearch}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         className="block p-4 ps-12 text-sm outline-none border rounded-lg text-white"
         placeholder="Search ..."
       />

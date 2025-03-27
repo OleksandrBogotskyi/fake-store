@@ -4,36 +4,12 @@ import { ACTION_TYPE } from "../../enums/action-types.enum";
 
 export const fetchProducts = createAsyncThunk(
   ACTION_TYPE.FETCH_PRODUCTS,
-  async (_, { rejectWithValue }) => {
+  async (filters: { title?: string; categoryId?: number } = {}, { rejectWithValue }) => {
     try {
-      const data = await ProductsService.fetchProducts();
+      const data = await ProductsService.fetchProducts(filters);
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message || "Failed to fetch products");
-    }
-  }
-);
-
-export const fetchProductsByCategory = createAsyncThunk(
-  ACTION_TYPE.FETCH_PRODUCTS_BY_CATEGORY,
-  async (categoryId: number, { rejectWithValue }) => {
-    try {
-      const data = await ProductsService.fetchProductsByCategory(categoryId);
-      return data;
-    } catch (error: any) {
-      return rejectWithValue(error.message || "Failed to fetch products by category");
-    }
-  }
-);
-
-export const fetchProductsByTitle = createAsyncThunk(
-  ACTION_TYPE.FETCH_PRODUCTS_BY_TITLE,
-  async (title: string, { rejectWithValue }) => {
-    try {
-      const data = await ProductsService.fetchProductsByTitle(title);
-      return data;
-    } catch (error: any) {
-      return rejectWithValue(error.message || "Failed to fetch products by title");
     }
   }
 );
