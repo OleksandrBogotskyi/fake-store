@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts, fetchProductsByCategory } from "./actions";
+import { fetchProducts } from "./actions";
 import { ProductsState } from "../products/types";
 
 export const initialState: ProductsState = {
@@ -22,17 +22,6 @@ const productsSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload as string;
-      })
-      .addCase(fetchProductsByCategory.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.products = action.payload;
-      })
-      .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });
