@@ -12,4 +12,15 @@ export class ProductsService {
       throw error;
     }
   }
+
+  static async fetchProductById(id: number) {
+    try {
+      const response = await axiosInstance.get(`${APIEndpoints.PRODUCTS}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching product by ID:", error);
+      throw error;
+    }
+  }
 }
+

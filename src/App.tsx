@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path={AppRoutes.HOME} element={<Store />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path={AppRoutes.PRODUCT} element={<ProductPage />} />
       </Routes>
     </div>
   );

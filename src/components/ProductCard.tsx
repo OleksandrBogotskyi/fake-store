@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../types/product.type';
+import { getProductRoute } from '../helpers/route.helpers';
 
 interface ProductCardProps {
   product: Product;
@@ -8,7 +9,7 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="p-7 border border-gray-800 rounded-xl w-full justify-center justify-items-center justify-self-center">
-      <Link to={`/product/${product.id}`}>
+      <Link to={getProductRoute(product.id)}>
         <img
           className="w-full rounded-lg self-stretch h-72 min-h-52 mb-7 object-cover"
           src={product.images[0]}
