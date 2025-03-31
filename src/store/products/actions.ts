@@ -4,7 +4,7 @@ import { ACTION_TYPE } from "../../enums/action-types.enum";
 
 export const fetchProducts = createAsyncThunk(
   ACTION_TYPE.FETCH_PRODUCTS,
-  async (filters: { title?: string; categoryId?: number } = {}, { rejectWithValue }) => {
+  async (filters: { title?: string; categoryId?: number; id?: number } = {}, { rejectWithValue }) => {
     try {
       const data = await ProductsService.fetchProducts(filters);
       return data;
@@ -13,3 +13,4 @@ export const fetchProducts = createAsyncThunk(
     }
   }
 );
+
