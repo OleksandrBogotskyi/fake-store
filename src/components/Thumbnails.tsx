@@ -3,10 +3,10 @@ import classNames from 'classnames';
 interface ThumbnailProps {
   img: string;
   isSelected: boolean;
-  onClick: () => void;
+  onSelect: () => void;
 }
 
-function Thumbnail({ img, isSelected, onClick }: ThumbnailProps) {
+function Thumbnail({ img, isSelected, onSelect }: ThumbnailProps) {
   return (
     <img
       className={classNames(
@@ -18,7 +18,7 @@ function Thumbnail({ img, isSelected, onClick }: ThumbnailProps) {
       )}
       src={img}
       alt="Product Thumbnail"
-      onClick={onClick}
+      onClick={onSelect}
     />
   );
 }

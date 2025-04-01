@@ -8,6 +8,11 @@ interface ImageGalleryProps {
 function ImageGallery({ images }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
+  const handleSelectImage = (img: string) => () => {
+    setSelectedImage(img);
+  };
+  
+
   return (
     <div className="flex items-center">
       <div className="flex flex-col gap-6 items-center mr-20">
@@ -16,7 +21,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
             key={index}
             img={img}
             isSelected={selectedImage === img}
-            onClick={() => setSelectedImage(img)}
+            onSelect={handleSelectImage(img)}
           />
         ))}
       </div>
