@@ -13,8 +13,10 @@ function Store() {
   const categories = useAppSelector(selectCategories);
   const status = useAppSelector(selectProductsStatus);
   const error = useAppSelector(selectProductsError);
+
   const [selectedCategory, setSelectedCategory] = useState<Nullable<Category>>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -25,23 +27,20 @@ function Store() {
       categoryId: selectedCategory?.id,
       title: searchQuery.trim(),
     };
-    dispatch(fetchProducts(filters));
+    
+    setIsLoading(true); 
+    dispatch(fetchProducts(filters)).finally(() => setIsLoading(false));
   }, [dispatch, selectedCategory, searchQuery]);
 
   return (
     <div className="container mx-auto p-4">
-      {status === "loading" && <p>Loading products...</p>}
       {status === "failed" && <p className="text-red-500">Error: {error}</p>}
-      {status === "succeeded" && (
-        <>
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onChangeCategory={setSelectedCategory}
-          />
-          <ProductList products={products} />
-        </>
-      )}
+      <CategoryFilter
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onChangeCategory={setSelectedCategory}
+      />
+      <ProductList products={products} isLoading={isLoading} />
     </div>
   );
 }
