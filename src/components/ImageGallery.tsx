@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ImageThumbnails from './ImageThumbnails';
+import Thumbnail from './Thumbnails';
 
 interface ImageGalleryProps {
   images: string[];
@@ -10,7 +10,16 @@ function ImageGallery({ images }: ImageGalleryProps) {
 
   return (
     <div className="flex items-center">
-      <ImageThumbnails images={images} selectedImage={selectedImage} onSelect={setSelectedImage} />
+      <div className="flex flex-col gap-6 items-center mr-20">
+        {images.slice(0, 3).map((img, index) => (
+          <Thumbnail
+            key={index}
+            img={img}
+            isSelected={selectedImage === img}
+            onClick={() => setSelectedImage(img)}
+          />
+        ))}
+      </div>
       <img
         className="w-120 h-120 rounded-lg object-cover mr-40"
         src={selectedImage}
