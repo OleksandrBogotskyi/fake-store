@@ -23,13 +23,13 @@ function CategoryFilter({
   };
 
   return (
-    <div className="flex space-x-4 mb-4">
+    <div className="flex space-x-4 mb-4 justify-center">
       <button
         onClick={handleResetFilters}
         className={classNames('px-4 py-2 rounded-lg transition text-white', {
-          'bg-blue-500': !!selectedCategory,
+          'bg-blue-500': selectedCategory === null,
           'bg-gray-900 border border-gray-700 hover:bg-gray-800':
-            !selectedCategory,
+            selectedCategory !== null,
         })}
       >
         All
