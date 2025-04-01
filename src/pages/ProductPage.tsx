@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   fetchProductById,
-  selectProduct,
+  selectCurrentProduct,
   selectProductsStatus,
 } from '../store/products';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -12,7 +12,7 @@ import ImageGallery from '../components/ImageGallery';
 function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const product = useAppSelector(selectProduct);
+  const product = useAppSelector(selectCurrentProduct);
   const status = useAppSelector(selectProductsStatus);
   const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ import { ProductsState } from "../products/types";
 
 export const initialState: ProductsState = {
   products: [],
-  product: null,
+  currentProduct: null,
   status: "idle",
   error: null,
 };
@@ -28,11 +28,11 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProductById.pending, (state) => {
         state.status = "loading";
-        state.product = null;
+        state.currentProduct = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.product = action.payload;
+        state.currentProduct = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.status = "failed";

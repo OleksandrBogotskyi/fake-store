@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../types/product.type';
-import { getProductRoute } from '../helpers/route.helpers';
+import { getProductRoute } from '../helpers/route';
 
 interface ProductCardProps {
   product: Product;

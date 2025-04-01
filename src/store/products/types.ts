@@ -3,7 +3,7 @@ import { Nullable, NullableString } from "../../types/utils";
 
 export interface ProductsState {
     products: Product[];
-    product: Nullable<Product>;
+    currentProduct: Nullable<Product>;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: NullableString;
 }
