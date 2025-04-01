@@ -7,6 +7,10 @@ interface ThumbnailProps {
 }
 
 function Thumbnail({ img, isSelected, onSelect }: ThumbnailProps) {
+  const handleClick = () => {
+    onSelect(img);
+  };
+
   return (
     <img
       className={classNames(
@@ -18,7 +22,7 @@ function Thumbnail({ img, isSelected, onSelect }: ThumbnailProps) {
       )}
       src={img}
       alt="Product Thumbnail"
-      onClick={() => onSelect(img)}
+      onClick={handleClick}
     />
   );
 }
