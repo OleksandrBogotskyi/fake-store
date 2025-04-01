@@ -1,4 +1,4 @@
 export enum AppRoutes {
-    HOME = '/',
-  }
-  
+  HOME = '/',
+  PRODUCT_DETAILS = '/product/:id'
+}
